@@ -69,7 +69,7 @@ def query_huggingface_resume_analyzer(text):
 def query_serpapi_jobs(query):
     SERPAPI_URL = "https://serpapi.com/search.json"
     params = {
-        "engine": "duckduckgo_jobs",
+        "engine": "google_jobs",
         "q": query,
         "api_key": SERPAPI_API_KEY,
         "hl": "en",
@@ -82,7 +82,7 @@ def query_serpapi_jobs(query):
         jobs = data.get("jobs_results", [])
         return jobs
     else:
-        st.error("Error fetching jobs from SerpAPI")
+        st.error(f"SerpAPI error: {response.text}")
         return []
 
 def build_salary_link(job_title):
@@ -135,3 +135,5 @@ if st.button("Analyze & Search Jobs"):
             st.markdown("---")
     else:
         st.info("No jobs found or no search performed yet.")
+
+
