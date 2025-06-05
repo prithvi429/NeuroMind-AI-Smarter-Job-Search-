@@ -13,6 +13,12 @@ Welcome to **NeuroMind AI – Smarter Job Search**! This AI-powered Streamlit ap
 
 ---
 
+## 🌐 Live Demo
+
+Try the app live: [https://neuromindai.streamlit.app/](https://neuromindai.streamlit.app/)
+
+---
+
 ## 🖥️ How to Run
 
 1. **Clone the repository**
