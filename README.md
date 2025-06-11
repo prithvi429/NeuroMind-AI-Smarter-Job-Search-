@@ -6,16 +6,16 @@ Welcome to **NeuroMind AI – Smarter Job Search**! This AI-powered Streamlit ap
 
 ## 🚀 Features
 
-- **Resume Analysis:** Upload your PDF or DOCX resume and get AI-suggested job titles based on your experience.
-- **Job Search:** Instantly search for jobs using your resume or custom keywords.
-- **Salary Insights:** Get salary information for any job title via Levels.fyi.
-- **Interview Prep:** Access company-specific interview resources from Glassdoor.
+- **Resume Analysis**: Upload your PDF or DOCX resume and get AI-suggested job titles based on your experience.
+- **Job Search**: Instantly search for jobs using your resume or custom keywords.
+- **Salary Insights**: Get salary information for any job title via Levels.fyi.
+- **Interview Prep**: Access company-specific interview resources from Glassdoor.
 
 ---
 
 ## 🌐 Live Demo
 
-✨ Try the app live: [https://neuromindai.streamlit.app/](https://neuromindai.streamlit.app/)
+Try the app live: [https://neuromindai.streamlit.app/](https://neuromindai.streamlit.app/)
 
 ---
 
@@ -45,14 +45,13 @@ Welcome to **NeuroMind AI – Smarter Job Search**! This AI-powered Streamlit ap
 
 ## 📄 Example Usage
 
-1. Upload your resume or enter a job title.
-2. Click **Analyze & Search Jobs**.
-3. View suggested job titles, job listings, salary info, and interview prep links.
+- Upload your resume or enter a job title.
+- Click **Analyze & Search Jobs**.
+- View suggested job titles, job listings, salary info, and interview prep links.
 
 ---
 
 ## 🛠️ Tech Stack
-
 - Python
 - Streamlit
 - Hugging Face Inference API
