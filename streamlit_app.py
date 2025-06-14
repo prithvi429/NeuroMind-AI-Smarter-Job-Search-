@@ -4,12 +4,35 @@ import requests
 from io import BytesIO
 from docx import Document
 from PyPDF2 import PdfReader
+from dotenv import load_dotenv
+load_dotenv()
 
 # Load API keys from environment variables
 SERPAPI_API_KEY = os.getenv("SERPAPI_API_KEY")
 HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACE_API_KEY")
 
 st.set_page_config(page_title="NeuroMind AI - Smarter Job Search", layout="wide")
+
+st.markdown("""
+<style>
+    .main {
+        background-color: #f5f7fa;
+    }
+    .stButton>button {
+        background-color: #4F8BF9;
+        color: white;
+        font-weight: bold;
+        border-radius: 8px;
+        padding: 0.5em 2em;
+    }
+    .stTextInput>div>div>input {
+        border-radius: 8px;
+    }
+    .stFileUploader>div>div {
+        border-radius: 8px;
+    }
+</style>
+""", unsafe_allow_html=True)
 
 st.title("🧠 NeuroMind AI – Smarter Job Search")
 
@@ -66,7 +89,7 @@ def query_huggingface_resume_analyzer(text):
 def query_serpapi_jobs(query):
     SERPAPI_URL = "https://serpapi.com/search.json"
     params = {
-        "engine": "duckduckgo_jobs",
+        "engine": "google_jobs",
         "q": query,
         "api_key": SERPAPI_API_KEY,
         "hl": "en",
@@ -78,7 +101,7 @@ def query_serpapi_jobs(query):
         data = response.json()
         return data.get("jobs_results", [])
     else:
-        st.error("Error fetching jobs from SerpAPI")
+        st.error(f"SerpAPI error: {response.text}")
         return []
 
 def build_salary_link(job_title):
@@ -92,10 +115,17 @@ def build_interview_link(company_name):
 
 # --- Streamlit UI ---
 
-uploaded_file = st.file_uploader("Upload your resume (PDF or DOCX)", type=["pdf", "docx"])
-query_text = st.text_input("Or enter a job title or keywords:")
+st.markdown("""
+### 1️⃣ Upload your resume (PDF or DOCX) or enter a job title/keywords below:
+""")
+col1, col2 = st.columns([2, 3])
+with col1:
+    uploaded_file = st.file_uploader("Upload Resume", type=["pdf", "docx"])
+with col2:
+    query_text = st.text_input("Or enter a job title or keywords:")
 
-if st.button("Analyze & Search Jobs"):
+if st.button("🔍 Analyze & Search Jobs"):
+    jobs = []
     if uploaded_file:
         raw_text = extract_text(uploaded_file)
         if raw_text:
@@ -108,14 +138,12 @@ if st.button("Analyze & Search Jobs"):
                 jobs = query_serpapi_jobs(selected_title)
             else:
                 st.warning("Could not suggest job titles, try entering a query manually.")
-                jobs = []
         else:
-            jobs = []
+            st.warning("Could not extract text from your resume.")
     elif query_text:
         jobs = query_serpapi_jobs(query_text)
     else:
         st.warning("Please upload a resume or enter a job query.")
-        jobs = []
 
     if jobs:
         st.subheader("💼 Job Results")
