@@ -19,6 +19,16 @@ Welcome to **NeuroMind AI – Smarter Job Search**! This AI-powered Streamlit ap
 
 ---
 
+## 🧩 Sections & Files Used in This Project
+
+- `app.py` or `streamlit_app.py`: Main Streamlit application file. Run this to launch the app.
+- `requirements.txt`: Lists all Python dependencies. Install with `pip install -r requirements.txt`.
+- `.env`: Store your API keys here (see setup instructions below).
+- `README.md`: Project documentation and instructions.
+- `job_env/`: (Optional) Local Python environment folder (if present).
+
+---
+
 ## 🖥️ How to Run
 
 1. **Clone the repository**
@@ -39,6 +49,10 @@ Welcome to **NeuroMind AI – Smarter Job Search**! This AI-powered Streamlit ap
 4. **Run the app**
    ```powershell
    streamlit run app.py
+   ```
+   or
+   ```powershell
+   streamlit run streamlit_app.py
    ```
 
 ---
